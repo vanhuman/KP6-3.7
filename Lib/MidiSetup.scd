@@ -19,7 +19,7 @@
 MIDIIn.connectAll;
 
 ~midiOutDevice = \MUL;
-~bo.midiOut = MIDIout.new().getIDs;
+~bo.midiOut = SetMIDIOut.new().getIDs;
 ~bo.iac1ID = ~bo.midiOut[0];
 ~bo.extID = ~bo.midiOut[4];
 
