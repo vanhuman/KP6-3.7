@@ -176,10 +176,17 @@
 				.radius_(2).border_(1).canFocus_(false).font_(font)
 				.states_( [ [key.asString, Color.black, Color.white], [key.asString, Color.white, buttonColor] ] )
 				.action_({ |bt|
-					switch( bt.value,
-						1, { evt.regAdd(chan, layer, value) },
-						0, { evt.regAdd(chan, layer, value.neg ) }
-					);
+					var deferValue = rrand(2, 10) + ((5*(value - 36)) + (3*chan) + (2*layer)) / 3000;
+					{
+						switch( bt.value,
+							1, { evt.regAdd(chan, layer, value) },
+							0, { evt.regAdd(chan, layer, value.neg ) }
+						);
+					}.defer( deferValue );
+					// switch( bt.value,
+					// 	1, { evt.regAdd(chan, layer, value) },
+					// 	0, { evt.regAdd(chan, layer, value.neg ) }
+					// );
 				});
 			);
 		});
@@ -268,8 +275,8 @@
 		// keycode.postln;
 		// Esc stops all notes
 		if(keycode == 53, {
-			buttonStop.valueAction_(1);
 			buttonClearRegs.valueAction_(1);
+			{ buttonStop.valueAction_(1) }.defer(0.5);
 		});
 		// Alt-O toggles OSC out monitor
 		if(keycode == 31 && modifiers.isAlt, {
