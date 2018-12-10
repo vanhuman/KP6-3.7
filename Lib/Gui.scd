@@ -176,7 +176,7 @@
 				.radius_(2).border_(1).canFocus_(false).font_(font)
 				.states_( [ [key.asString, Color.black, Color.white], [key.asString, Color.white, buttonColor] ] )
 				.action_({ |bt|
-					var deferValue = rrand(2, 10) + ((5*(value - 36)) + (3*chan) + (2*layer)) / 3000;
+					var deferValue = rrand(10, 20) + ((10*(value - 36)) + (3*chan) + (2*layer)) / 3000;
 					{
 						switch( bt.value,
 							1, { evt.regAdd(chan, layer, value) },
