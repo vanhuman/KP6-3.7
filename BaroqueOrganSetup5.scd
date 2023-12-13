@@ -3,7 +3,7 @@
 // ------------ Setup environment ------------
 // connect with DHCP to server 192.168.0.60
 
-~testMode = true;
+~testMode = false;
 
 if(~bo.notNil, { ~bo.clearAll() });
 ~bo = EM(); // functions in an EM always have the environment as first argument
